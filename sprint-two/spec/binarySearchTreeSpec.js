@@ -16,8 +16,6 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
-    //console.log(binarySearchTree.left.right.value);
-    debugger;
     expect(binarySearchTree.left.right.value).to.equal(3);
     expect(binarySearchTree.right.left.value).to.equal(6);
   });
@@ -36,7 +34,6 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.depthFirstLog(func);
-    console.log(array);
     expect(array).to.eql([5,2,3]);
   });
 });

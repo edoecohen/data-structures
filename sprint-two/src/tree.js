@@ -12,10 +12,16 @@ var Tree = function(value){
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
+  // TIME COMPLEXITY: O(1) - Time Constant
+  // Simply add the child to the parent.
+
   this.children.push(Tree(value));
 };
 
 treeMethods.contains = function(target){
+  // TIME COMPLEXITY: O(N) - Time Linear
+  // We need to traverse the entire tree
+
   var exists = false;
   var inner = function(node){
     if(node.value === target){

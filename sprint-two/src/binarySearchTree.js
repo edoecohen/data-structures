@@ -1,33 +1,20 @@
 var BinarySearchTree = function(value){
 
-  // Create a new node
-  // If there are no nodes yet, new node is 'head node'
-  // If there is a head node, then check R / L, and place accordingly
-  //
   var obj = Object.create(BinarySearchTree.prototype);
 
   obj.value = value;
   obj.right = null;
   obj.left = null;
-  //debugger;
-  // if obj is emptry obj.inse
 
   return obj;
 };
 
 BinarySearchTree.prototype.insert = function(value){
-  // while (node != null)
-  // if(value < node.value ){
-  //  if (node.left === null){
-  //    node.left = treeNode(value);
-  //   }else{
-  //    node = node.left
-  //   }
-  //  else if
-  // }
-  // node = node.left or node.right
+
   var traverse = function(node){
-   // debugger;
+  // TIME COMPLEXITY: O(log n) - Time Log
+  // Slows down as we progress
+
     if (value > node.value){
       if(node.right === null){
         node.right = treeNode(value);
@@ -43,16 +30,18 @@ BinarySearchTree.prototype.insert = function(value){
       }
     }
   };
+
   traverse(this);
-
-
 
 }
 
 BinarySearchTree.prototype.contains = function(value){
+  // TIME COMPLEXITY: O(log n) - Time Log
+  // Slows down as we progress
+
   var flag = false;
   var traverse = function(node){
-   // debugger;
+
     if (value === node.value){
       flag = true;
     }
@@ -74,10 +63,13 @@ BinarySearchTree.prototype.contains = function(value){
   traverse(this);
   return flag;
 
-
 }
 
 BinarySearchTree.prototype.depthFirstLog = function(value){
+  // TIME COMPLEXITY: O(N) - Time Linear
+  // Need to traverse the entire tree
+
+
   var traverse = function(node){
    // debugger;
     node && value(node.value);

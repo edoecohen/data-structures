@@ -16,12 +16,10 @@ var LimitedArray = function(limit){
 
   var limitedArray = {};
   limitedArray.get = function(index){
-    //index = getIndexBelowMaxForKey(index);
     checkLimit(index);
     return storage[index];
   };
   limitedArray.set = function(index, value){
-    //index = getIndexBelowMaxForKey(index);
     checkLimit(index);
     storage[index] = value;
   };
@@ -36,22 +34,21 @@ var LimitedArray = function(limit){
     if(limit <= index){ throw new Error('Error trying to access an over-the-limit index'); }
   };
 
-  limitedArray.getIndexBelowMaxForKey = function(str, max){
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-      hash = (hash<<5) + hash + str.charCodeAt(i);
-      hash = hash & hash; // Convert to 32bit integer
-      hash = Math.abs(hash);
-    }
-    return hash % max;
-  };
-
   return limitedArray;
 };
 
 // This is a "hashing function". You don't need to worry about it, just use it
 // to turn any string into an integer that is well-distributed between the
 // numbers 0 and `max`
+var getIndexBelowMaxForKey = function(str, max){
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = (hash<<5) + hash + str.charCodeAt(i);
+    hash = hash & hash; // Convert to 32bit integer
+    hash = Math.abs(hash);
+  }
+  return hash % max;
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
