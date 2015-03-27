@@ -59,6 +59,8 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
+  // TIME COMPLEXITY: O(n) - Time Linear
+
   var temp = this.storage[fromNode].edges;
   for (var i =0; i< temp.length; i++){
     if (temp[i] === toNode){
@@ -74,6 +76,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.forEachNode = function(cb){
+  // TIME COMPLEXITY: O(N) - Time Linear
   for (var key in this.storage){
     cb(key);
   }

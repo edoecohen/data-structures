@@ -4,8 +4,8 @@ var HashTable = function(){
 };
 
 HashTable.prototype.insert = function(k, v){
+  // TIME COMPLEXITY: O(1) - Time Constant
     var i = getIndexBelowMaxForKey(k, this._limit);
-
     if (this._storage.get(i) === undefined){
       this._storage.set(i, new Array([k,v]));
     }
@@ -15,9 +15,9 @@ HashTable.prototype.insert = function(k, v){
 };
 
 HashTable.prototype.retrieve = function(k){
+  // TIME COMPLEXITY: O(1) - Time Constant
   var i = getIndexBelowMaxForKey(k, this._limit);
   var curAr = this._storage.get(i);
-
   for( var j = 0; j < curAr.length; j++ ){
     if (curAr[j] === undefined){
       return null
@@ -29,6 +29,7 @@ HashTable.prototype.retrieve = function(k){
 };
 
 HashTable.prototype.remove = function(k){
+  // TIME COMPLEXITY: O(1) - Time Constant
   var i = getIndexBelowMaxForKey(k, this._limit);
   var curArray = this._storage.get(i);
   for (var j = 0; j< curArray.length; j++){
