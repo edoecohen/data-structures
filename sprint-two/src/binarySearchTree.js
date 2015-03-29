@@ -62,23 +62,46 @@ BinarySearchTree.prototype.contains = function(value){
   };
   traverse(this);
   return flag;
-
 }
 
-BinarySearchTree.prototype.depthFirstLog = function(value){
+BinarySearchTree.prototype.depthFirstLog = function(callback){
   // TIME COMPLEXITY: O(N) - Time Linear
   // Need to traverse the entire tree
 
-
   var traverse = function(node){
-   // debugger;
-    node && value(node.value);
+    node && callback(node.value);
     node.left && traverse(node.left);
     node.right && traverse(node.right);
   };
   traverse(this);
 
 }
+
+BinarySearchTree.prototype.breadthFirstLog = function(callback){
+  
+  var Q = [];
+  var last = 0;
+
+  var enqueue = function(value){
+    Q[last] = value;
+    last++;
+  };
+
+  if ( Q.length < 1 ){
+    enqueue(this);
+  }
+  for( var i = 0; i < Q.length; i++ ){
+    if ( Q[i].left !== null ) {
+      enqueue(Q[i].left);
+    }
+    if ( Q[i].right !== null ) {
+      enqueue(Q[i].right);
+    }
+  }
+  for ( var i = 0; i < Q.length; i++ ){
+    console.log(callback(Q[i].value));
+  }
+};
 
 var treeNode = function(value){
   var node = {};
